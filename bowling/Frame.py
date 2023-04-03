@@ -13,3 +13,6 @@ class Frame(object):
 
     def is_spare(self):
         return self.get_score() == 10
+
+    def is_strike(self):
+        return self.firstTry == 10
