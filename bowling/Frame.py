@@ -1,15 +1,15 @@
 class Frame(object):
-    firstStrike = 0
-    secondStrike = 0
+    firstTry = 0
+    secondTry = 0
 
     def get_score(self):
-        return self.firstStrike + self.secondStrike
+        return self.firstTry + self.secondTry
 
-    def save_first_strike(self, value):
-        self.firstStrike = value
+    def save_first_try(self, value):
+        self.firstTry = value
 
-    def save_second_strike(self, value):
-        self.secondStrike = value
+    def save_second_try(self, value):
+        self.secondTry = value
 
     def is_spare(self):
         return self.get_score() == 10
