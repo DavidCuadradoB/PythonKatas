@@ -67,5 +67,16 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue('The frame is full' in str(context.exception))
 
 
+    def test_throw__given_frame_with_strike__should_throw_an_exception(self):
+        strike_value = 10
+        value = 2
+        self.frame.save_first_try(strike_value)
+
+        with self.assertRaises(FrameFull) as context:
+            self.frame.throw(value)
+
+        self.assertTrue('The frame is full' in str(context.exception))
+
+
 if __name__ == '__main__':
     unittest.main()
