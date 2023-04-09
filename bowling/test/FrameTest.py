@@ -48,13 +48,13 @@ class MyTestCase(unittest.TestCase):
 
     def test_throw__given_frame_without_tries__should_save_the_value_in_first_try(self):
         value = 5
-        self.frame.throw(value)
+        self.frame.add_try(value)
         self.assertEqual(self.frame.firstTry, value)
 
     def test_throw__given_frame_with_one_try__should_save_the_value_in_second_try(self):
         self.frame.save_first_try(1)
         value = 5
-        self.frame.throw(value)
+        self.frame.add_try(value)
         self.assertEqual(self.frame.secondTry, value)
 
     def test_throw__given_frame_with_both_tries__should_throw_an_exception(self):
@@ -62,7 +62,7 @@ class MyTestCase(unittest.TestCase):
         self.frame.save_second_try(3)
         value = 5
         with self.assertRaises(FrameFull) as context:
-            self.frame.throw(value)
+            self.frame.add_try(value)
 
         self.assertTrue('The frame is full' in str(context.exception))
 
@@ -73,7 +73,7 @@ class MyTestCase(unittest.TestCase):
         self.frame.save_first_try(strike_value)
 
         with self.assertRaises(FrameFull) as context:
-            self.frame.throw(value)
+            self.frame.add_try(value)
 
         self.assertTrue('The frame is full' in str(context.exception))
 
