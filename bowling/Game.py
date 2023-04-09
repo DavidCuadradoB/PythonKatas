@@ -1,9 +1,16 @@
 from bowling.Frame import Frame, FrameFull
 
 
-class Game(object):
+class GameIsOver(Exception):
+    """Raised when the player doesn't have any other tries."""
+    pass
+
+
+class Game:
     NUMBER_OF_FRAMES = 10
-    frames = []
+
+    def __init__(self):
+        self.frames=[]
 
     def get_turn(self):
         return len(self.frames)
@@ -18,7 +25,7 @@ class Game(object):
                 self.frames[-1].add_try(value)
             except FrameFull:
                 if len(self.frames) == self.NUMBER_OF_FRAMES:
-                    raise Exception('Game is over')
+                    raise GameIsOver("Game is Over")
                 frame = Frame()
                 frame.add_try(value)
                 self.frames.append(frame)
