@@ -3,7 +3,7 @@ class FrameFull(Exception):
     pass
 
 
-class Frame(object):
+class Frame:
     firstTry = -1
     secondTry = -1
 
