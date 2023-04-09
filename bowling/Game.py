@@ -20,12 +20,15 @@ class Game:
             frame = Frame()
             frame.add_try(value)
             self.frames.append(frame)
+            return frame
         else:
             try:
                 self.frames[-1].add_try(value)
+                return self.frames[-1]
             except FrameFull:
                 if len(self.frames) == self.NUMBER_OF_FRAMES:
                     raise GameIsOver("Game is Over")
                 frame = Frame()
                 frame.add_try(value)
                 self.frames.append(frame)
+                return frame
